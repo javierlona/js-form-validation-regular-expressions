@@ -7,8 +7,8 @@ const PHONE = document.querySelector("#phone");
 // Form Blur Event Listeners
 NAME.addEventListener("blur", validate_name);
 ZIPCODE.addEventListener("blur", validate_zipcode);
-// EMAIL.addEventListener("blur", validate_email);
-// PHONE.addEventListener("blur", validate_phone);
+EMAIL.addEventListener("blur", validate_email);
+PHONE.addEventListener("blur", validate_phone);
 
 function validate_name() {
   // Create regular expression
@@ -36,3 +36,28 @@ function validate_zipcode() {
 
 }
 
+function validate_email() {
+  // Create regular expression
+  let regularExp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,7})$/;
+  // Verify via regular expression
+  if(!regularExp.test(EMAIL.value)){
+    // Add the class to
+    EMAIL.classList.add("is-invalid");
+  } else {
+    EMAIL.classList.remove("is-invalid");
+  }
+
+}
+
+function validate_phone() {
+  // Create regular expression
+  let regularExp = /^(\d{3})-(\d{3})-(\d{4})$/;
+  // Verify via regular expression
+  if(!regularExp.test(PHONE.value)){
+    // Add the class to
+    PHONE.classList.add("is-invalid");
+  } else {
+    PHONE.classList.remove("is-invalid");
+  }
+
+}

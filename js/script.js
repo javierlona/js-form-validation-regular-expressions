@@ -1,19 +1,37 @@
+// Create the const input field variables
+const NAME = document.querySelector("#name");
+const ZIPCODE = document.querySelector("#zipcode");
+const EMAIL = document.querySelector("#email");
+const PHONE = document.querySelector("#phone");
+
 // Form Blur Event Listeners
-document.querySelector("name").addEventListener("blur", validate_name);
-document.querySelector("zipcode").addEventListener("blur", validate_zipcode);
-document.querySelector("email").addEventListener("blur", validate_email);
-document.querySelector("phone").addEventListener("blur", validate_phone);
+NAME.addEventListener("blur", validate_name);
+ZIPCODE.addEventListener("blur", validate_zipcode);
+// EMAIL.addEventListener("blur", validate_email);
+// PHONE.addEventListener("blur", validate_phone);
 
 function validate_name() {
-  // Select the field
-  const name = document.querySelector("name");
   // Create regular expression
-  let regularExp = /^[a-zA-Z -.]{2,30}$/;
-
-  if(!regularExp.test(name.value)){
-    name.classList.add("is-invalid");
+  let regularExp = /^[a-zA-Z -.]{3,30}$/;
+  // Verify via regular expression
+  if(!regularExp.test(NAME.value)){
+    // Add the class to
+    NAME.classList.add("is-invalid");
   } else {
-    name.classList.remove("is-invalid");
+    NAME.classList.remove("is-invalid");
+  }
+
+}
+
+function validate_zipcode() {
+  // Create regular expression
+  let regularExp = /^[0-9]{5}(-[0-9]{4})?$/;
+  // Verify via regular expression
+  if(!regularExp.test(ZIPCODE.value)){
+    // Add the class to
+    ZIPCODE.classList.add("is-invalid");
+  } else {
+    ZIPCODE.classList.remove("is-invalid");
   }
 
 }
